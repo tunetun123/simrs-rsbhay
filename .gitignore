@@ -1,0 +1,8 @@
+# skip DS_Store
+.DS_Store
+
+# skip database.xml
+setting/database.xml
+
+# skip nbproject
+nbproject/*
