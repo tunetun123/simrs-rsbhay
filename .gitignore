@@ -6,3 +6,5 @@ setting/database.xml
 
 # skip nbproject
 nbproject/*
+/build/
+/dist/
