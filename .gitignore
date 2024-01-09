@@ -1,6 +1,6 @@
 # skip DS_Store
 .DS_Store
-
+.idea
 # skip database.xml
 setting/database.xml
 
