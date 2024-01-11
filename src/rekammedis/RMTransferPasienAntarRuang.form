@@ -468,7 +468,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="09-01-2024 17:32:26"/>
+                                <StringItem index="0" value="11-01-2024 09:46:44"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -505,7 +505,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="09-01-2024 17:32:26"/>
+                                <StringItem index="0" value="11-01-2024 09:46:45"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -1091,7 +1091,7 @@
                         <Component class="widget.ComboBox" name="HubunganMenyetujui">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="15">
+                              <StringArray count="16">
                                 <StringItem index="0" value="Kakak"/>
                                 <StringItem index="1" value="Adik"/>
                                 <StringItem index="2" value="Saudara"/>
@@ -1106,7 +1106,8 @@
                                 <StringItem index="11" value="Menantu"/>
                                 <StringItem index="12" value="Ipar"/>
                                 <StringItem index="13" value="Mertua"/>
-                                <StringItem index="14" value="-"/>
+                                <StringItem index="14" value="Diri Sendiri"/>
+                                <StringItem index="15" value="-"/>
                               </StringArray>
                             </Property>
                             <Property name="name" type="java.lang.String" value="HubunganMenyetujui" noResource="true"/>
@@ -1908,7 +1909,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="09-01-2024"/>
+                            <StringItem index="0" value="11-01-2024"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -1936,7 +1937,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="09-01-2024"/>
+                            <StringItem index="0" value="11-01-2024"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
