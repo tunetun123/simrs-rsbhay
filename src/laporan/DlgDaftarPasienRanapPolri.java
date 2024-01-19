@@ -44,7 +44,7 @@ public class DlgDaftarPasienRanapPolri extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        Object[] rowRwJlDr={"No.","No.RM","Nama Pasien","Cara Bayar","Tgl.Masuk","Tgl.Pulang","Ruangan","H.P.","Pangkat","Satuan","Golongan","Jabatan"};
+        Object[] rowRwJlDr={"No.","No.RM","NIP/NRP","Nama Pasien","Cara Bayar","Tgl.Masuk","Tgl.Pulang","Ruangan","H.P.","Pangkat","Satuan","Golongan","Jabatan"};
         tabMode=new DefaultTableModel(null,rowRwJlDr){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -53,31 +53,33 @@ public class DlgDaftarPasienRanapPolri extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 12; i++) {
+        for (i = 0; i < 13; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(35);
             }else if(i==1){
                 column.setPreferredWidth(60);
             }else if(i==2){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(120);
             }else if(i==3){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(150);
             }else if(i==4){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(130);
             }else if(i==5){
                 column.setPreferredWidth(75);
             }else if(i==6){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(75);
             }else if(i==7){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(200);
             }else if(i==8){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(35);
             }else if(i==9){
                 column.setPreferredWidth(150);
             }else if(i==10){
                 column.setPreferredWidth(150);
             }else if(i==11){
+                column.setPreferredWidth(150);
+            }else if(i==12){
                 column.setPreferredWidth(150);
             }
         }
@@ -710,7 +712,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         try {
             Valid.tabelKosong(tabMode);
             ps=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,penjab.png_jawab,reg_periksa.tgl_registrasi,reg_periksa.no_rawat, "+
+                    "select pasien.no_rkm_medis,pasien.nip,pasien.nm_pasien,penjab.png_jawab,reg_periksa.tgl_registrasi,reg_periksa.no_rawat, "+
                     "pangkat_polri.nama_pangkat,satuan_polri.nama_satuan,golongan_polri.nama_golongan,jabatan_polri.nama_jabatan "+
                     "from pasien inner join reg_periksa inner join penjab inner join pangkat_polri inner join satuan_polri inner join pasien_polri "+
                     "inner join golongan_polri inner join jabatan_polri on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -783,7 +785,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }
                     
                     tabMode.addRow(new String[]{
-                        i+"",rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("png_jawab"),rs.getString("tgl_registrasi"),tglkeluar,
+                        i+"",rs.getString("no_rkm_medis"),rs.getString("nip"),rs.getString("nm_pasien"),rs.getString("png_jawab"),rs.getString("tgl_registrasi"),tglkeluar,
                         kamar,harirawat,rs.getString("nama_pangkat"),rs.getString("nama_satuan"),rs.getString("nama_golongan"),rs.getString("nama_jabatan")
                     });
                     i++;
