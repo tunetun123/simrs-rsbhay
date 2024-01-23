@@ -41,7 +41,8 @@ public final class DlgDkkSurveilansRalan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
-    private int i=0,hr0s6=0,hr7s28=0,kr1th=0,th1s4=0,th5s14=0,th15s24=0,th25s44=0,th45s64=0,th65plus=0,laki=0,per=0,jml=0,ttl=0,jmltotal;
+    private int i=0,hr0s7=0,hr8s28=0,kr1th=0,th1s4=0,th5s9=0,th10s14=0,th15s19=0,th20s44=0,th45s54=0,th55s59=0,
+                th60s69=0,th70plus=0,laki=0,per=0,jml=0,ttl=0,jmltotal;
     /** Creates new form DlgLhtBiaya
      * @param parent
      * @param modal */
@@ -51,8 +52,8 @@ public final class DlgDkkSurveilansRalan extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(885,674);
 
-        Object[] rowRwJlDr={"No.","Kode ICD 10","Jenis Penyakit","0-6 Hr","7-28 Hr","< 1","1-4","5-14","15-24","25-44",
-                            "45-64","> 65","Laki","Perp","Jumlah","Ttl.Kunjungan"};
+        Object[] rowRwJlDr={"No.","Kode ICD 10","Jenis Penyakit","0-7 Hr","8-28 Hr","< 1","1-4","5-9","10-14","15-19",
+                            "20-44","45-54","55-59","60-69","70+","Laki","Perp","Jumlah","Ttl.Kunjungan"};
         tabMode=new DefaultTableModel(null,rowRwJlDr){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -61,7 +62,7 @@ public final class DlgDkkSurveilansRalan extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 16; i++) {
+        for (i = 0; i < 19; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(30);
@@ -349,21 +350,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             i=1;
             jmltotal=0;
             while(rs.next()){
-                int satuanLaki06hr = 0,satuanPer06hr = 0;
-                int satuanLaki7_28hr = 0,satuanPer7_28hr = 0;
-                int satuanLakiKr_1th = 0,satuanPerKr_1th = 0;
-                int satuanLaki1_4th = 0, satuanPer1_4th = 0;
-                int satuanLaki5_14th = 0, satuanPer5_14th = 0;
-                int satuanLaki15_24th = 0, satuanPer15_24th = 0;
-                int satuanLaki25_44th = 0, satuanPer25_44th = 0;
-                int satuanLaki45_64 = 0,satuanPer45_64 = 0;
-                int satuanLaki65 = 0,satuanPer65 = 0;
-                hr0s6=0;hr7s28=0;kr1th=0;th1s4=0;th5s14=0;th15s24=0;th25s44=0;th45s64=0;th65plus=0;laki=0;per=0;jml=0;ttl=0;
+                hr0s7=0;hr8s28=0;kr1th=0;th1s4=0;th5s9=0;th10s14=0;th15s19=0;th20s44=0;th45s54=0;th55s59=0;th60s69=0;th70plus=0;laki=0;per=0;jml=0;ttl=0;
                 ps2.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps2.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                 ps2.setString(3,rs.getString("kd_penyakit"));
                 rs2=ps2.executeQuery();
-                while(rs2.next()){
+                while(rs2.next()){            
                     ttl=ttl+1;
                     jmltotal=jmltotal+1;
                     if(Sequel.cariInteger("select count(diagnosa_pasien.no_rawat) from reg_periksa inner join diagnosa_pasien "+
@@ -380,95 +372,39 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     break;
                             }
                             if(rs2.getString("umur").contains("Hr")){
-                                if(Valid.SetAngka(rs2.getString("umur").replaceAll(" Hr","").replaceAll("Hr","").replaceAll(" ",""))<=6){
-                                    hr0s6=hr0s6+1;
-                                    if(rs2.getString("jk").contains("L")) {
-                                        satuanLaki06hr += 1;
-                                    } else if (rs2.getString("jk").contains("P")) {
-                                        satuanPer06hr += 1;
-                                    }
+                                if(Valid.SetAngka(rs2.getString("umur").replaceAll(" Hr","").replaceAll("Hr","").replaceAll(" ",""))<=7){
+                                    hr0s7=hr0s7+1;
                                 }else if(Valid.SetAngka(rs2.getString("umur").replaceAll(" Hr","").replaceAll("Hr","").replaceAll(" ",""))<=28){
-                                    hr7s28=hr7s28+1;
-                                    if(rs2.getString("jk").contains("L")) {
-                                        satuanLaki7_28hr += 1;
-                                    } else if (rs2.getString("jk").contains("P")) {
-                                        satuanPer7_28hr += 1;
-                                    }
+                                    hr8s28=hr8s28+1;
                                 }
                             }else if(rs2.getString("umur").contains("Bl")){
                                 kr1th=kr1th+1;
-                                if(rs2.getString("jk").contains("L")) {
-                                    satuanLakiKr_1th += 1;
-                                } else if (rs2.getString("jk").contains("P")) {
-                                    satuanPerKr_1th += 1;
-                                }
                             }else if(rs2.getString("umur").contains("Th")){
                                 if(Valid.SetAngka(rs2.getString("umur").replaceAll(" Th","").replaceAll("Th","").replaceAll(" ",""))<=4){
                                     th1s4=th1s4+1;
-                                    if(rs2.getString("jk").contains("L")) {
-                                        satuanLaki1_4th += 1;
-                                    } else if (rs2.getString("jk").contains("P")) {
-                                        satuanPer1_4th += 1;
-                                    }
+                                }else if(Valid.SetAngka(rs2.getString("umur").replaceAll(" Th","").replaceAll("Th","").replaceAll(" ",""))<=9){
+                                    th5s9=th5s9+1;
                                 }else if(Valid.SetAngka(rs2.getString("umur").replaceAll(" Th","").replaceAll("Th","").replaceAll(" ",""))<=14){
-                                    th5s14=th5s14+1;
-                                    if(rs2.getString("jk").contains("L")) {
-                                        satuanLaki5_14th += 1;
-                                    } else if (rs2.getString("jk").contains("P")) {
-                                        satuanPer5_14th += 1;
-                                    }
-                                }else if(Valid.SetAngka(rs2.getString("umur").replaceAll(" Th","").replaceAll("Th","").replaceAll(" ",""))<=24){
-                                    th15s24=th15s24+1;
-                                    if(rs2.getString("jk").contains("L")) {
-                                        satuanLaki15_24th += 1;
-                                    } else if (rs2.getString("jk").contains("P")) {
-                                        satuanPer15_24th += 1;
-                                    }
+                                    th10s14=th10s14+1;
+                                }else if(Valid.SetAngka(rs2.getString("umur").replaceAll(" Th","").replaceAll("Th","").replaceAll(" ",""))<=19){
+                                    th15s19=th15s19+1;
                                 }else if(Valid.SetAngka(rs2.getString("umur").replaceAll(" Th","").replaceAll("Th","").replaceAll(" ",""))<=44){
-                                    th25s44=th25s44+1;
-                                    if(rs2.getString("jk").contains("L")) {
-                                        satuanLaki25_44th += 1;
-                                    } else if (rs2.getString("jk").contains("P")) {
-                                        satuanPer25_44th += 1;
-                                    }
-                                }else if(Valid.SetAngka(rs2.getString("umur").replaceAll(" Th","").replaceAll("Th","").replaceAll(" ",""))<=64){
-                                    th45s64=th45s64+1;
-                                    if(rs2.getString("jk").contains("L")) {
-                                        satuanLaki45_64 += 1;
-                                    } else if (rs2.getString("jk").contains("P")) {
-                                        satuanPer45_64 += 1;
-                                    }
-                                }else if(Valid.SetAngka(rs2.getString("umur").replaceAll(" Th","").replaceAll("Th","").replaceAll(" ",""))>=65){
-                                    th65plus=th65plus+1;
-                                    if(rs2.getString("jk").contains("L")) {
-                                        satuanLaki65 += 1;
-                                    } else if (rs2.getString("jk").contains("P")) {
-                                        satuanPer65 += 1;
-                                    }
+                                    th20s44=th20s44+1;
+                                }else if(Valid.SetAngka(rs2.getString("umur").replaceAll(" Th","").replaceAll("Th","").replaceAll(" ",""))<=54){
+                                    th45s54=th45s54+1;
+                                }else if(Valid.SetAngka(rs2.getString("umur").replaceAll(" Th","").replaceAll("Th","").replaceAll(" ",""))<=59){
+                                    th55s59=th55s59+1;
+                                }else if(Valid.SetAngka(rs2.getString("umur").replaceAll(" Th","").replaceAll("Th","").replaceAll(" ",""))<=69){
+                                    th60s69=th60s69+1;
+                                }else if(Valid.SetAngka(rs2.getString("umur").replaceAll(" Th","").replaceAll("Th","").replaceAll(" ",""))>=70){
+                                    th70plus=th70plus+1;
                                 }
-//                                else if(Valid.SetAngka(rs2.getString("umur").replaceAll(" Th","").replaceAll("Th","").replaceAll(" ",""))<=59){
-//                                    th55s59=th55s59+1;
-//                                }else if(Valid.SetAngka(rs2.getString("umur").replaceAll(" Th","").replaceAll("Th","").replaceAll(" ",""))<=69){
-//                                    th60s69=th60s69+1;
-//                                }else if(Valid.SetAngka(rs2.getString("umur").replaceAll(" Th","").replaceAll("Th","").replaceAll(" ",""))>=70){
-//                                    th70plus=th70plus+1;
-//                                }
                             }
                     }                                       
                 }
                 jml=per+laki;
                 tabMode.addRow(new Object[]{
-                   i,rs.getString("kd_penyakit"),rs.getString("nm_penyakit"),
-                    hr0s6+" (L="+satuanLaki06hr+" | P="+satuanPer06hr+")",
-                    hr7s28+" (L="+satuanLaki7_28hr+"/P="+satuanPer7_28hr+")",
-                    kr1th+" (L="+satuanLakiKr_1th+"/P="+satuanPerKr_1th+")",
-                    th1s4+" (L="+satuanLaki1_4th+"/P="+satuanPer1_4th+")",
-                    th5s14+" (L="+satuanLaki5_14th+"/P="+satuanPer5_14th+")",
-                    th15s24+" (L="+satuanLaki15_24th+"/P="+satuanPer15_24th+")",
-                    th25s44+" (L="+satuanLaki25_44th+"/P="+satuanPer25_44th+")",
-                    th45s64+" (L="+satuanLaki45_64+"P="+satuanPer45_64+")",
-                    th65plus+" (L="+satuanLaki65+"/P="+satuanPer65+")",
-                    laki,per,jml,ttl
+                   i,rs.getString("kd_penyakit"),rs.getString("nm_penyakit"),hr0s7,hr8s28,kr1th,th1s4,th5s9,th10s14,th15s19,th20s44,th45s54,th55s59,th60s69,th70plus,laki,per,jml,ttl
                 });
                 i++;
             }
