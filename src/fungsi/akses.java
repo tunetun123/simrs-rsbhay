@@ -219,7 +219,8 @@ public final class akses {
             bpjs_kunjungan_sep_apotek=false,bpjs_monitoring_klaim_apotek=false,bpjs_daftar_pelayanan_obat_apotek=false,penilaian_awal_medis_ralan_paru=false,
             catatan_keperawatan_ralan=false,catatan_persalinan=false,skor_aldrette_pasca_anestesi=false,skor_steward_pasca_anestesi=false,skor_bromage_pasca_anestesi=false,
             penilaian_pre_induksi=false,hasil_usg_urologi=false,hasil_usg_gynecologi=false,hasil_pemeriksaan_ekg=false,hapus_edit_sep_bpjs=false,satu_sehat_kirim_diet=false,
-            satu_sehat_mapping_obat=false,dapur_ringkasan_pembelian=false,satu_sehat_kirim_medication=false,satu_sehat_kirim_medicationrequest=false;
+            satu_sehat_mapping_obat=false,dapur_ringkasan_pembelian=false,satu_sehat_kirim_medication=false,satu_sehat_kirim_medicationrequest=false,
+            penatalaksanaan_terapi_okupasi=false,satu_sehat_kirim_medicationdispense=false,hasil_usg_neonatus=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1247,6 +1248,9 @@ public final class akses {
                         akses.dapur_ringkasan_pembelian=true;
                         akses.satu_sehat_kirim_medication=true;
                         akses.satu_sehat_kirim_medicationrequest=true;
+                        akses.penatalaksanaan_terapi_okupasi=true;
+                        akses.satu_sehat_kirim_medicationdispense=true;
+                        akses.hasil_usg_neonatus=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2258,6 +2262,9 @@ public final class akses {
                         akses.dapur_ringkasan_pembelian=rs2.getBoolean("dapur_ringkasan_pembelian");
                         akses.satu_sehat_kirim_medication=rs2.getBoolean("satu_sehat_kirim_medication");
                         akses.satu_sehat_kirim_medicationrequest=rs2.getBoolean("satu_sehat_kirim_medicationrequest");
+                        akses.penatalaksanaan_terapi_okupasi=rs2.getBoolean("penatalaksanaan_terapi_okupasi");
+                        akses.satu_sehat_kirim_medicationdispense=rs2.getBoolean("satu_sehat_kirim_medicationdispense");
+                        akses.hasil_usg_neonatus=rs2.getBoolean("hasil_usg_neonatus");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3267,6 +3274,9 @@ public final class akses {
                         akses.dapur_ringkasan_pembelian=false;
                         akses.satu_sehat_kirim_medication=false;
                         akses.satu_sehat_kirim_medicationrequest=false;
+                        akses.penatalaksanaan_terapi_okupasi=false;
+                        akses.satu_sehat_kirim_medicationdispense=false;
+                        akses.hasil_usg_neonatus=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4299,6 +4309,9 @@ public final class akses {
         akses.dapur_ringkasan_pembelian=false;
         akses.satu_sehat_kirim_medication=false;
         akses.satu_sehat_kirim_medicationrequest=false;
+        akses.penatalaksanaan_terapi_okupasi=false;
+        akses.satu_sehat_kirim_medicationdispense=false;
+        akses.hasil_usg_neonatus=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5347,4 +5360,7 @@ public final class akses {
     public static boolean getdapur_ringkasan_pembelian(){return akses.dapur_ringkasan_pembelian;}
     public static boolean getsatu_sehat_kirim_medication(){return akses.satu_sehat_kirim_medication;}
     public static boolean getsatu_sehat_kirim_medicationrequest(){return akses.satu_sehat_kirim_medicationrequest;}
+    public static boolean getpenatalaksanaan_terapi_okupasi(){return akses.penatalaksanaan_terapi_okupasi;}
+    public static boolean getsatu_sehat_kirim_medicationdispense(){return akses.satu_sehat_kirim_medicationdispense;}
+    public static boolean gethasil_usg_neonatus(){return akses.hasil_usg_neonatus;}
 }   
